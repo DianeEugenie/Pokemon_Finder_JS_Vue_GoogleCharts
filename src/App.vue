@@ -4,7 +4,7 @@
 
   <div id="main-container">
     <PokemonList :pokemons="pokemons"/>
-    <PokemonDetail :pokemon="selectedPokemon"/>
+    <PokemonDetail v-if="selectedPokemon" :pokemon="selectedPokemon"/>
   </div>
 
 </div>
@@ -13,6 +13,7 @@
 <script>
 import PokemonList from '@/components/PokemonList';
 import PokemonDetail from '@/components/PokemonDetail';
+import {eventBus} from './main.js';
 
 export default {
   name: 'app',
@@ -26,7 +27,12 @@ export default {
     fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964')
     .then(res => res.json())
     .then(data => this.pokemons = data.results)
+
+    eventBus.$on('pokemon-selected', (pokemon) => {
+      this.selectedPokemon = pokemon
+    })
   },
+
   components: {
     PokemonList,
     PokemonDetail
