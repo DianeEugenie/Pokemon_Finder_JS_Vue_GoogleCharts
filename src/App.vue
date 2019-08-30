@@ -4,7 +4,7 @@
 
   <div id="main-container">
     <PokemonList :pokemons="pokemons"/>
-    <PokemonDetail :pokemon="pokemon"/>
+    <PokemonDetail :pokemon="selectedPokemon"/>
   </div>
 
 </div>
@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       pokemons: [],
-      pokemon: {}
+      selectedPokemon: null
     }
   },
   mounted(){
