@@ -1,12 +1,14 @@
 <template lang="html">
-  <div id="list">
-      <input text="text" v-model="searchedPokemon" @input="searchForPokemon" placeholder="Find Your Pokemon"/>
+  <div id="main-list">
+
+    <div id="list">
+      <h2>Pokemonlist</h2>
       <PokemonListItem v-for="(pokemon, index) of pokemons" :pokemon="pokemon" :key="index" />
+    </div>
   </div>
 </template>
 
 <script>
-import {eventBus} from '../main.js';
 import PokemonListItem from '@/components/PokemonListItem';
 
 export default {
@@ -19,15 +21,6 @@ export default {
   props: ['pokemons'],
   components: {
     PokemonListItem
-  },
-  methods: {
-    searchForPokemon() {
-      for (let pokemon of this.pokemons) {
-        if (pokemon.name.indexOf(this.searchedPokemon.toLowerCase()) > -1) {
-          return eventBus.$emit('pokemon-selected', pokemon)
-        }
-      }
-    }
   }
 }
 
@@ -39,16 +32,21 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 1em;
+  padding: 0.5em;
   justify-content: space-around;
-  width: 20em;
+  width: 30em;
   height: 30em;
   overflow: scroll;
 }
 
-#wrapper {
+#main-list {
+  border: 1px solid black;
   display: flex;
-  display: column;
+  flex-direction: column;
+}
+h2 {
+  padding: 0 10em;
+  font-family: 'Press Start 2P', cursive;
 }
 
 

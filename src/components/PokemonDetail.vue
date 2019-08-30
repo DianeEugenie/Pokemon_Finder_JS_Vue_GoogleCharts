@@ -1,7 +1,11 @@
 <template lang="html">
   <div class="main" v-if="pokemon">
+
+    <h3>Your Pokemon Is...</h3>
     <h2> {{pokemonDetails.name | upperCase }}</h2>
+
     <div class="main-details">
+
       <div class="name-type">
         <h4>In The Wild</h4>
         <img v-for="(value, key) in sprites" :src="value" v-if="value !== null && key === 'front_default' || key === 'front_shiny'">
@@ -15,9 +19,10 @@
 
         <h4>Moves</h4>
         <span v-for="(move, index) of moves" v-if="index <= 5">{{ move.name | capitalize }}</span>
-
       </div>
+
     </div>
+
   </div>
 
 </template>
@@ -75,7 +80,7 @@ div.main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 20em;
+  width: 30em;
   justify-content: flex-start;
   border: 1px solid black;
 }
@@ -99,9 +104,20 @@ div.main {
 
 h4 {
   text-align: center;
-  margin-bottom: 0.3em;
+  margin-top: 0;
+  margin-bottom: 0.5em;
   border: 1px solid black;
   padding: 0.2em;
   border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+}
+h3, h2{
+  margin-top: 0.5em;
+  font-family: 'Press Start 2P', cursive;
+}
+
+img {
+  height: 96px;
+  width: 96px;
 }
 </style>

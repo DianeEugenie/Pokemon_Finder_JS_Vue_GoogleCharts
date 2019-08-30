@@ -2,6 +2,8 @@
 <div id="view">
   <h1>Gotta Find 'em All!</h1>
 
+  <PokemonSearch :pokemons="pokemons"/>
+
   <div id="main-container">
     <PokemonList :pokemons="pokemons"/>
     <PokemonDetail v-if="selectedPokemon" :pokemon="selectedPokemon"/>
@@ -13,6 +15,7 @@
 <script>
 import PokemonList from '@/components/PokemonList';
 import PokemonDetail from '@/components/PokemonDetail';
+import PokemonSearch from '@/components/PokemonSearch';
 import {eventBus} from './main.js';
 
 export default {
@@ -35,7 +38,8 @@ export default {
 
   components: {
     PokemonList,
-    PokemonDetail
+    PokemonDetail,
+    PokemonSearch
   }
 
 }
@@ -45,6 +49,11 @@ export default {
 h1 {
   display: flex;
   justify-content: center;
+  color: #3b477d;
+  text-shadow: 0 2px 5px #f5de2f;
+  /* font-family: 'Bangers', cursive; */
+  font-family: 'Press Start 2P', cursive;
+  /* font-family: 'Carter One', cursive; */
 }
 
 #view {
@@ -52,6 +61,9 @@ h1 {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: stretch;
+  background-color: #8aaabf;
+  margin: 0;
+  padding: 0;
 }
 
 #main-container {
@@ -59,6 +71,9 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  align-items: stretch;
 }
+
+
 
 </style>
