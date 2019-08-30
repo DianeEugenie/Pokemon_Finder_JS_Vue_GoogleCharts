@@ -26,7 +26,8 @@ export default {
 
 <style lang="css" scoped>
 #pokemon {
-  border: 1px solid lightseagreen;
+  border: 1px solid red;
+  border-radius: 5px;
   padding: 0.5em;
   display: flex;
   flex-direction: wrap;

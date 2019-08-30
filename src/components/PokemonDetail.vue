@@ -1,15 +1,23 @@
 <template lang="html">
-  <div v-if="pokemon">
+  <div class="main" v-if="pokemon">
     <h2> {{pokemonDetails.name | upperCase }}</h2>
-    <img id="poke-pic">
+    <div class="main-details">
+      <div class="name-type">
+        <h4>In The Wild</h4>
+        <img v-for="(value, key) in sprites" :src="value" v-if="value !== null && key === 'front_default' || key === 'front_shiny'">
+        <h4>Type</h4>
+        <span v-for="(type, index) of types">{{ type.name | capitalize }}</span>
+      </div>
 
-    <h3>Abilities</h3>
-    <span v-for="(ability, index) of abilities">{{ ability.name | capitalize }}</span>
-    <h3>First Five Moves</h3>
-    <span v-for="(move, index) of moves" v-if="index <= 5">{{ move.name | capitalize }}</span>
-    <!-- <span>{{getAbilities()}}</span> -->
+      <div class="abilities-moves">
+        <h4>Abilities</h4>
+        <span v-for="(ability, index) of abilities">{{ ability.name | capitalize }}</span>
 
+        <h4>Moves</h4>
+        <span v-for="(move, index) of moves" v-if="index <= 5">{{ move.name | capitalize }}</span>
 
+      </div>
+    </div>
   </div>
 
 </template>
@@ -22,7 +30,9 @@ export default {
     return {
       pokemonDetails: {},
       abilities: [],
-      moves: []
+      moves: [],
+      types: [],
+      sprites: {}
     }
   },
   mounted(){
@@ -30,7 +40,6 @@ export default {
   },
   updated() {
     this.fetchPokemon();
-    document.getElementById("poke-pic").src = this.pokemonDetails.sprites['front_default']
   },
   methods: {
     fetchPokemon(){
@@ -39,7 +48,9 @@ export default {
       .then(data => {
       this.pokemonDetails = data;
       this.abilities = this.pokemonDetails.abilities.map(ability => ability['ability']);
-      this.moves = this.pokemonDetails.moves.map(move => move['move'])
+      this.moves = this.pokemonDetails.moves.map(move => move['move']);
+      this.types = this.pokemonDetails.types.map(type => type['type']);
+      this.sprites = this.pokemonDetails['sprites']
 
       })
     }
@@ -60,11 +71,37 @@ export default {
 </script>
 
 <style lang="css" scoped>
-div {
+div.main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
   width: 20em;
+  justify-content: flex-start;
+  border: 1px solid black;
+}
+
+.main-details {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.name-type, .abilities-moves {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1px solid red;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+h4 {
+  text-align: center;
+  margin-bottom: 0.3em;
+  border: 1px solid black;
+  padding: 0.2em;
+  border-radius: 5px;
 }
 </style>
