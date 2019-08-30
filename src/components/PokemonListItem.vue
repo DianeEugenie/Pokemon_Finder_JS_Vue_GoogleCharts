@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="pokemon" @click="handleClick">
-    {{pokemon.name}}
+    {{pokemon.name | capitalize}}
   </div>
 
 </template>
@@ -14,6 +14,11 @@ export default {
   methods: {
     handleClick() {
       eventBus.$emit('pokemon-selected', this.pokemon)
+    }
+  },
+  filters: {
+    capitalize: function (value) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
     }
   }
 }
