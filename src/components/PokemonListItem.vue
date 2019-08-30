@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="" @click="handleClick">
+  <div id="pokemon" @click="handleClick">
     {{pokemon.name}}
   </div>
 
@@ -20,4 +20,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
+#pokemon {
+  border: 1px solid lightseagreen;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: wrap;
+  margin: 0.2em;
+  width: 5em;
+  align-items: center;
+}
+
 </style>
