@@ -4,7 +4,7 @@
 
   <div id="main-container">
     <PokemonList :pokemons="pokemons"/>
-    <PokemonDetail />
+    <PokemonDetail :pokemon="pokemon"/>
   </div>
 
 </div>
