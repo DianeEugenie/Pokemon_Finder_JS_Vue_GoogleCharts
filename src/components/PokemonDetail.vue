@@ -4,7 +4,10 @@
     <h3>Your Pokemon Is...</h3>
     <h2> {{pokemonDetails.name | upperCase }}</h2>
 
+    <div class="main-column">
+
     <div class="main-details">
+
 
       <div class="name-type">
         <h4>In The Wild</h4>
@@ -19,11 +22,19 @@
 
         <h4>Moves</h4>
         <span v-for="(move, index) of moves" v-if="index <= 5">{{ move.name | capitalize }}</span>
-
-
       </div>
 
     </div>
+    <GChart id="pokeChart" v-if="statData"
+    type="BarChart"
+    :data="statData"
+    :options="chartOptions"
+    />
+
+    </div>
+
+
+
     <button type="button" @click="addToFavs" v-if=" this.favourites.length < 10 && !this.favourites.includes(pokemon) ">My Favourite!</button>
 
     <p v-if="this.favourites.includes(pokemon)">One of your Favs!</p>
@@ -31,15 +42,6 @@
     <button type="button" @click="removeFromFavs" v-if="this.favourites.includes(pokemon) ">Remove From Favourites</button>
 
     <p v-if="this.favourites.length === 10 && !this.favourites.includes(pokemon)">You already have 10 Favs!</p>
-    <div id="pokeChart"></div>
-    <GChart v-if="statData"
-    type="ColumnChart"
-    :data="statData"
-    :options="chartOptions"
-    />
-
-
-{{statData}}
   </div>
 
 
@@ -63,10 +65,13 @@ export default {
       statNames: [],
       statData: [],
       chartOptions: {
-        width: 500,
-        height: 200,
-        title: 'Pokemon Stats',
-        colors: ['black']
+        // width: 700,
+        height: 300,
+        title: 'Your Base PokeStats!',
+        colors: ['black'],
+        fontName: 'Press Start 2P',
+        fontSize: 8,
+        backgroundColor: '#d3dbe0'
       }
     }
   },
@@ -92,7 +97,7 @@ export default {
         this.sprites = this.pokemonDetails['sprites'];
         this.stats = this.pokemonDetails.stats.map(stat => stat['base_stat']);
         this.statNames = this.pokemonDetails.stats.map(stat => stat.stat['name']);
-        let newData = [['Stat Name', 'Stat Value']];
+        let newData = [['Stat Name', 'Value']];
         for (var i = 0; i < this.statNames.length; i++) {
           newData.push([this.statNames[i], this.stats[i]]);
         };
@@ -136,6 +141,7 @@ div.main {
   font-family: 'Press Start 2P', cursive;
 }
 
+
 .main-details {
   display: flex;
   flex-direction: row;
@@ -146,6 +152,10 @@ div.main {
   color: #303b6b;
   background-color: #abbfcc;
   box-shadow: 1px 2px #242f3b;
+}
+.main-column {
+  display: flex;
+  flex-direction: column;
 }
 
 .name-type, .abilities-moves {
@@ -206,8 +216,6 @@ p {
 }
 
 #pokeChart {
-  width: 500px;
-  height: 300px;
-  border: 1px solid black;
+ display: flex;
 }
 </style>
