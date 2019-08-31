@@ -32,8 +32,11 @@ export default {
   flex-direction: row;
   text-shadow: none;
   padding: 0.5em;
-  margin: 0.2em;
+  margin: 0 0.2em;
   border-radius: 5px;
+  background-color: lightgrey;
+  border: 1px solid grey;
+  margin-bottom: 0.5em;
 }
 
 #fav-pokemon:hover {

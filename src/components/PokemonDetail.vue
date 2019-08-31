@@ -133,6 +133,7 @@ h4 {
   border-radius: 5px;
   color: #3b477d;
   text-shadow: 0 2px 5px #f5de2f;
+  background-color: lightgrey;
 }
 h3, h2{
   margin-top: 0.5em;
@@ -153,6 +154,17 @@ button {
   font-family: 'Press Start 2P', cursive;
   padding: 1em;
   border: 1px solid black;
+  box-shadow: 0 4px grey;
   border-radius: 5px;
+}
+
+button:hover {
+  background-color: lightgrey;
+
+}
+
+button:active {
+  box-shadow: 0 1px grey;
+  transform: translateY(3px);
 }
 </style>

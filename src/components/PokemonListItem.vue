@@ -37,6 +37,7 @@ export default {
   margin: 0.5em;
   display: flex;
   justify-content: space-evenly;
+  background-color: lightgrey;
   width: 8em;
 }
 #pokemon:hover {
