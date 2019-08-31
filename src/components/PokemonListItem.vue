@@ -11,6 +11,11 @@ import {eventBus} from '../main.js';
 export default {
   name: 'list-item',
   props: ['pokemon'],
+  data() {
+    return {
+      searchedPokemon: ""
+    }
+  },
   methods: {
     handleClick() {
       eventBus.$emit('pokemon-selected', this.pokemon)
@@ -26,14 +31,17 @@ export default {
 
 <style lang="css" scoped>
 #pokemon {
-  border: 1px solid red;
+  box-shadow: 0 0 5px red;
   border-radius: 5px;
-  padding: 0.5em;
+  padding: 1em 2em;
+  margin: 0.5em;
   display: flex;
-  flex-direction: wrap;
-  margin: 0.2em;
-  width: 5em;
-  align-items: center;
+  justify-content: space-evenly;
+  width: 8em;
+}
+#pokemon:hover {
+  text-shadow: 0 0px 3px #f5de2f;
+  box-shadow: 0 0 8px red;
 }
 
 </style>

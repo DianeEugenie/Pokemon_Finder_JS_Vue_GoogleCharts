@@ -42,4 +42,8 @@ input {
   border-radius: 5px;
   font-family: 'Press Start 2P', cursive;
 }
+label {
+  font-family: 'Press Start 2P', cursive;
+  color: #242f3b;
+}
 </style>

@@ -70,7 +70,7 @@ h1 {
   margin-top: 2em;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: stretch;
 }
 

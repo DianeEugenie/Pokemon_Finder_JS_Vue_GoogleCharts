@@ -77,29 +77,34 @@ export default {
 
 <style lang="css" scoped>
 div.main {
+  padding-top: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30em;
+  min-width: 30em;
+  max-width: 40em;
+  min-height: 30em;
+  max-height: 35em;
   justify-content: flex-start;
-  border: 1px solid black;
 }
 
 .main-details {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
+  border: 3px double black;
+  border-radius: 5px;
   align-items: flex-start;
   justify-content: space-between;
+  color: #242f3b;
 }
 
 .name-type, .abilities-moves {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  border: 1px solid red;
   padding: 0.5em;
   margin: 0.5em;
+  font-family: 'Press Start 2P', cursive;
 }
 
 h4 {
@@ -110,14 +115,21 @@ h4 {
   padding: 0.2em;
   border-radius: 5px;
   font-family: 'Press Start 2P', cursive;
+  color: #3b477d;
+  text-shadow: 0 2px 5px #f5de2f;
 }
 h3, h2{
   margin-top: 0.5em;
   font-family: 'Press Start 2P', cursive;
+  color: #3b477d;
+  text-shadow: 0 2px 5px #f5de2f;
 }
 
 img {
   height: 96px;
   width: 96px;
+}
+span {
+  margin: 0.2em;
 }
 </style>

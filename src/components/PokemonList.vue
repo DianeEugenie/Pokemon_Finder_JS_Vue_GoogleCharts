@@ -1,8 +1,9 @@
 <template lang="html">
   <div id="main-list">
+    <h2>Pokemonlist</h2>
 
     <div id="list">
-      <h2>Pokemonlist</h2>
+
       <PokemonListItem v-for="(pokemon, index) of pokemons" :pokemon="pokemon" :key="index" />
     </div>
   </div>
@@ -13,11 +14,6 @@ import PokemonListItem from '@/components/PokemonListItem';
 
 export default {
   name: 'pokemon-list',
-  data() {
-    return {
-      searchedPokemon: ""
-    }
-  },
   props: ['pokemons'],
   components: {
     PokemonListItem
@@ -29,24 +25,35 @@ export default {
 <style lang="css" scoped>
 #list {
   border: 3px double black;
+  border-radius: 5px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 0.5em;
-  justify-content: space-around;
-  width: 30em;
-  height: 30em;
+  justify-content: space-between;
   overflow: scroll;
+  color: #242f3b;
+  font-family: 'Press Start 2P', cursive;
+  min-width: 30em;
+  max-width: 40em;
+  min-height: 30em;
+  max-height: 35em;
 }
 
 #main-list {
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
 }
+
 h2 {
-  padding: 0 10em;
+  text-align: center;
   font-family: 'Press Start 2P', cursive;
+  color: #3b477d;
+  text-shadow: 0 2px 5px #f5de2f;
+}
+
+.hidden {
+  display: none;
 }
 
 
