@@ -41,7 +41,7 @@ export default {
     })
 
     eventBus.$on('pokemon-favourited', (pokemon) => {
-      this.favourites.push(pokemon);
+      if (this.favourites.length < 10) {this.favourites.push(pokemon) };
     })
   },
   components: {

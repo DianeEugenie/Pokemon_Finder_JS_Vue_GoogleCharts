@@ -24,8 +24,9 @@
 
 
     </div>
-    <button type="button" @click="addToFavs" v-if="!this.favourites.includes(pokemon)">My Favourite!</button>
+    <button type="button" @click="addToFavs" v-if=" this.favourites.length < 10 && !this.favourites.includes(pokemon) ">My Favourite!</button>
     <p v-if="this.favourites.includes(pokemon)">One of your Favs!</p>
+    <p v-if="this.favourites.length === 10">You already have 10 Favs!</p>
   </div>
 
 </template>

@@ -27,4 +27,17 @@ export default {
 </script>
 
 <style lang="css" scoped>
+#fav-pokemon {
+  display: flex;
+  flex-direction: row;
+  text-shadow: none;
+  padding: 0.5em;
+  margin: 0.2em;
+  border-radius: 5px;
+}
+
+#fav-pokemon:hover {
+  text-shadow: 0 0 1px #f5de2f;
+  box-shadow: 0 0 5px red;
+}
 </style>

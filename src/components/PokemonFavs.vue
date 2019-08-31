@@ -1,9 +1,12 @@
 <template lang="html">
   <div id="favourites" v-if="this.favourites.length">
-    <h4>My Favourites</h4>
+    <h4>My 10 Favourites</h4>
 
-    <PokemonFavsItem v-for="(pokemon, index) of this.favourites" :pokemon="pokemon" :key="index" />
+    <div id="fav-list">
 
+      <PokemonFavsItem v-for="(pokemon, index) of this.favourites" :pokemon="pokemon" :key="index" />
+
+    </div>
   </div>
 
 </template>
@@ -40,9 +43,18 @@ export default {
   flex-direction: column;
   font-family: 'Press Start 2P', cursive;
   text-shadow: 0 2px 5px #f5de2f;
+  margin: 1em 5em;
+  box-shadow: 0 0 3px #242f3b;
+  border-radius: 5px;
 }
 
-#fav-pokemon {
-  text-shadow: none;
+#fav-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
+
+
+
+
 </style>
