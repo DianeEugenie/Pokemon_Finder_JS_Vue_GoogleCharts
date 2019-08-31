@@ -25,6 +25,7 @@
 
     </div>
     <button type="button" @click="addToFavs" v-if="!this.favourites.includes(pokemon)">My Favourite!</button>
+    <p v-if="this.favourites.includes(pokemon)">One of your Favs!</p>
   </div>
 
 </template>
@@ -93,6 +94,7 @@ div.main {
   min-height: 30em;
   max-height: 35em;
   justify-content: flex-start;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .main-details {
@@ -111,7 +113,6 @@ div.main {
   align-items: stretch;
   padding: 0.5em;
   margin: 0.5em;
-  font-family: 'Press Start 2P', cursive;
 }
 
 h4 {
@@ -121,13 +122,11 @@ h4 {
   border: 1px solid black;
   padding: 0.2em;
   border-radius: 5px;
-  font-family: 'Press Start 2P', cursive;
   color: #3b477d;
   text-shadow: 0 2px 5px #f5de2f;
 }
 h3, h2{
   margin-top: 0.5em;
-  font-family: 'Press Start 2P', cursive;
   color: #3b477d;
   text-shadow: 0 2px 5px #f5de2f;
 }
