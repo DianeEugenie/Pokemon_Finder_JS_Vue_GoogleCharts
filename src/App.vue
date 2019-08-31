@@ -9,6 +9,9 @@
     <PokemonDetail v-if="selectedPokemon" :pokemon="selectedPokemon"/>
   </div>
 
+<PokemonFavs :favourites="favourites" />
+
+
 </div>
 </template>
 
@@ -16,6 +19,7 @@
 import PokemonList from '@/components/PokemonList';
 import PokemonDetail from '@/components/PokemonDetail';
 import PokemonSearch from '@/components/PokemonSearch';
+import PokemonFavs from '@/components/PokemonFavs';
 import {eventBus} from './main.js';
 
 export default {
@@ -23,7 +27,8 @@ export default {
   data() {
     return {
       pokemons: [],
-      selectedPokemon: null
+      selectedPokemon: null,
+      favourites: []
     }
   },
   mounted(){
@@ -34,12 +39,16 @@ export default {
     eventBus.$on('pokemon-selected', (pokemon) => {
       this.selectedPokemon = pokemon
     })
-  },
 
+    eventBus.$on('pokemon-favourited', (pokemon) => {
+      this.favourites.push(pokemon);
+    })
+  },
   components: {
     PokemonList,
     PokemonDetail,
-    PokemonSearch
+    PokemonSearch,
+    PokemonFavs
   }
 
 }

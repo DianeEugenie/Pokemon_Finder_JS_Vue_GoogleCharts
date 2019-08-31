@@ -21,13 +21,17 @@
         <span v-for="(move, index) of moves" v-if="index <= 5">{{ move.name | capitalize }}</span>
       </div>
 
-    </div>
 
+
+    </div>
+    <button type="button" @click="addToFavs">My Favourite!</button>
   </div>
 
 </template>
 
 <script>
+import {eventBus} from '../main.js';
+
 export default {
   name: 'pokemon-detail',
   props: ['pokemon'],
@@ -51,13 +55,16 @@ export default {
       fetch(this.pokemon.url) // only fetches the first link of pokemon that is clicked
       .then(res => res.json())
       .then(data => {
-      this.pokemonDetails = data;
-      this.abilities = this.pokemonDetails.abilities.map(ability => ability['ability']);
-      this.moves = this.pokemonDetails.moves.map(move => move['move']);
-      this.types = this.pokemonDetails.types.map(type => type['type']);
-      this.sprites = this.pokemonDetails['sprites']
+        this.pokemonDetails = data;
+        this.abilities = this.pokemonDetails.abilities.map(ability => ability['ability']);
+        this.moves = this.pokemonDetails.moves.map(move => move['move']);
+        this.types = this.pokemonDetails.types.map(type => type['type']);
+        this.sprites = this.pokemonDetails['sprites']
 
       })
+    },
+    addToFavs() {
+      eventBus.$emit('pokemon-favourited', this.pokemon);
     }
   },
   filters: {
@@ -131,5 +138,13 @@ img {
 }
 span {
   margin: 0.2em;
+}
+
+button {
+  margin-top: 0.5em;
+  font-family: 'Press Start 2P', cursive;
+  padding: 1em;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 </style>
