@@ -4,12 +4,12 @@
 
   <PokemonSearch :pokemons="pokemons"/>
 
+  <PokemonFavs :favourites="favourites" :pokemon="selectedPokemon" />
+
   <div id="main-container">
     <PokemonList :pokemons="pokemons"/>
-    <PokemonDetail v-if="selectedPokemon" :pokemon="selectedPokemon"/>
+    <PokemonDetail v-if="selectedPokemon" :pokemon="selectedPokemon" :favourites="favourites"/>
   </div>
-
-<PokemonFavs :favourites="favourites" />
 
 
 </div>

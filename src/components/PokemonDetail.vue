@@ -24,7 +24,7 @@
 
 
     </div>
-    <button type="button" @click="addToFavs">My Favourite!</button>
+    <button type="button" @click="addToFavs" v-if="!this.favourites.includes(pokemon)">My Favourite!</button>
   </div>
 
 </template>
@@ -34,7 +34,7 @@ import {eventBus} from '../main.js';
 
 export default {
   name: 'pokemon-detail',
-  props: ['pokemon'],
+  props: ['pokemon', 'favourites'],
   data() {
     return {
       pokemonDetails: {},
