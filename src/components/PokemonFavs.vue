@@ -42,16 +42,21 @@ export default {
   align-items: center;
   flex-direction: column;
   font-family: 'Press Start 2P', cursive;
-  text-shadow: 0 2px 5px #f5de2f;
+  text-shadow: 0 2px #ffae0d;
   margin: 1em 5em;
-  box-shadow: 0 0 3px #242f3b;
-  border-radius: 5px;
+  box-shadow: 1px 2px #242f3b;
+  border: 2px groove grey;
+  background-color: #abbfcc;
 }
 
 #fav-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+h4 {
+  color: #303b6b;
 }
 
 

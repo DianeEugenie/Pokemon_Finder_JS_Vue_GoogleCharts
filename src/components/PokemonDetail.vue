@@ -19,9 +19,9 @@
 
         <h4>Moves</h4>
         <span v-for="(move, index) of moves" v-if="index <= 5">{{ move.name | capitalize }}</span>
+
+
       </div>
-
-
 
     </div>
     <button type="button" @click="addToFavs" v-if=" this.favourites.length < 10 && !this.favourites.includes(pokemon) ">My Favourite!</button>
@@ -31,25 +31,48 @@
     <button type="button" @click="removeFromFavs" v-if="this.favourites.includes(pokemon) ">Remove From Favourites</button>
 
     <p v-if="this.favourites.length === 10 && !this.favourites.includes(pokemon)">You already have 10 Favs!</p>
+    <div id="pokeChart"></div>
+    <GChart v-if="statData"
+    type="ColumnChart"
+    :data="statData"
+    :options="chartOptions"
+    />
 
+
+{{statData}}
   </div>
+
 
 </template>
 
 <script>
+import { GChart } from 'vue-google-charts';
 import {eventBus} from '../main.js';
+
 
 export default {
   name: 'pokemon-detail',
-  props: ['pokemon', 'favourites'],
   data() {
     return {
       pokemonDetails: {},
       abilities: [],
       moves: [],
       types: [],
-      sprites: {}
+      sprites: {},
+      stats: [],
+      statNames: [],
+      statData: [],
+      chartOptions: {
+        width: 500,
+        height: 200,
+        title: 'Pokemon Stats',
+        colors: ['black']
+      }
     }
+  },
+  props: ['pokemon', 'favourites'],
+  components: {
+    GChart
   },
   mounted(){
     this.fetchPokemon();
@@ -66,10 +89,16 @@ export default {
         this.abilities = this.pokemonDetails.abilities.map(ability => ability['ability']);
         this.moves = this.pokemonDetails.moves.map(move => move['move']);
         this.types = this.pokemonDetails.types.map(type => type['type']);
-        this.sprites = this.pokemonDetails['sprites']
+        this.sprites = this.pokemonDetails['sprites'];
+        this.stats = this.pokemonDetails.stats.map(stat => stat['base_stat']);
+        this.statNames = this.pokemonDetails.stats.map(stat => stat.stat['name']);
+        let newData = [['Stat Name', 'Stat Value']];
+        for (var i = 0; i < this.statNames.length; i++) {
+          newData.push([this.statNames[i], this.stats[i]]);
+        };
+        this.statData = newData})
+      },
 
-      })
-    },
     addToFavs() {
       eventBus.$emit('pokemon-favourited', this.pokemon);
     },
@@ -80,16 +109,17 @@ export default {
   filters: {
     upperCase: function (value) {
       if (value) {
-      return value.toUpperCase()
-    }
+        return value.toUpperCase();
+      }
     },
     capitalize: function (value) {
       if (value) {
-      return value.charAt(0).toUpperCase() + value.slice(1)
-    }
+        return value.charAt(0).toUpperCase() + value.slice(1);
+      }
     }
   }
 }
+
 </script>
 
 <style lang="css" scoped>
@@ -109,36 +139,37 @@ div.main {
 .main-details {
   display: flex;
   flex-direction: row;
-  border: 3px double black;
+  border: 3px double #606d75;
   border-radius: 5px;
   align-items: flex-start;
   justify-content: space-between;
-  color: #242f3b;
+  color: #303b6b;
+  background-color: #abbfcc;
+  box-shadow: 1px 2px #242f3b;
 }
 
 .name-type, .abilities-moves {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 0.5em;
+  padding: 0 0.5em;
   margin: 0.5em;
 }
 
 h4 {
   text-align: center;
-  margin-top: 0;
+  margin-top: 0.5em;
   margin-bottom: 0.5em;
-  border: 1px solid black;
+  border: 1px solid #606d75;
   padding: 0.2em;
   border-radius: 5px;
   color: #3b477d;
-  text-shadow: 0 2px 5px #f5de2f;
-  background-color: lightgrey;
+  background-color: #d3dbe0;
 }
 h3, h2{
   margin-top: 0.5em;
-  color: #3b477d;
-  text-shadow: 0 2px 5px #f5de2f;
+  color: #303b6b;
+  text-shadow: 0 2px #ffae0d;
 }
 
 img {
@@ -150,21 +181,33 @@ span {
 }
 
 button {
-  margin-top: 0.5em;
+  margin-top: 1em;
   font-family: 'Press Start 2P', cursive;
   padding: 1em;
-  border: 1px solid black;
-  box-shadow: 0 4px grey;
+  border: 1px solid #606d75;
+  box-shadow: 1px 4px #606d75;
   border-radius: 5px;
+  color: #303b6b;
 }
 
 button:hover {
-  background-color: lightgrey;
+  background-color: #e1e7eb;
 
 }
 
 button:active {
-  box-shadow: 0 1px grey;
+  box-shadow: 1px 1px #606d75;
   transform: translateY(3px);
+}
+
+p {
+  color: #303b6b;
+  text-shadow: 0 2px #ffae0d;
+}
+
+#pokeChart {
+  width: 500px;
+  height: 300px;
+  border: 1px solid black;
 }
 </style>

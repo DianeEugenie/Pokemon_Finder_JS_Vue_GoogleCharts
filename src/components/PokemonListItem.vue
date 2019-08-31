@@ -31,18 +31,18 @@ export default {
 
 <style lang="css" scoped>
 #pokemon {
-  box-shadow: 0 0 5px red;
+  border: 1px solid grey;
   border-radius: 5px;
   padding: 1em 2em;
   margin: 0.5em;
   display: flex;
   justify-content: space-evenly;
-  background-color: lightgrey;
+  background-color: #d3dbe0;
   width: 8em;
 }
 #pokemon:hover {
-  text-shadow: 0 0px 3px #f5de2f;
-  box-shadow: 0 0 8px red;
+  box-shadow: 0 0 2px black;
+  background-color: #e1e7eb;
 }
 
 </style>

@@ -14,7 +14,7 @@
 
 </div>
 </template>
-
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
 import PokemonList from '@/components/PokemonList';
 import PokemonDetail from '@/components/PokemonDetail';
@@ -64,11 +64,9 @@ export default {
 h1 {
   display: flex;
   justify-content: center;
-  color: #3b477d;
-  text-shadow: 0 2px 5px #f5de2f;
-  /* font-family: 'Bangers', cursive; */
+  color: #303b6b;
+  text-shadow: 0 4px #ffae0d;
   font-family: 'Press Start 2P', cursive;
-  /* font-family: 'Carter One', cursive; */
 }
 
 #view {

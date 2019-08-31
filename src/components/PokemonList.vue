@@ -24,7 +24,7 @@ export default {
 
 <style lang="css" scoped>
 #list {
-  border: 3px double black;
+  border: 3px double #606d75;
   border-radius: 5px;
   display: flex;
   flex-direction: row;
@@ -32,12 +32,14 @@ export default {
   padding: 0.5em;
   justify-content: space-between;
   overflow: scroll;
-  color: #242f3b;
+  color: #3b477d;
   font-family: 'Press Start 2P', cursive;
   min-width: 30em;
   max-width: 40em;
   min-height: 30em;
   max-height: 35em;
+  background-color: #abbfcc;
+  box-shadow: 1px 2px #242f3b;
 }
 
 #main-list {
@@ -48,8 +50,8 @@ export default {
 h2 {
   text-align: center;
   font-family: 'Press Start 2P', cursive;
-  color: #3b477d;
-  text-shadow: 0 2px 5px #f5de2f;
+  color: #303b6b;
+  text-shadow: 0 2px #ffae0d;
 }
 
 .hidden {

@@ -33,6 +33,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #303b6b;
 }
 input {
   padding: 1em;
@@ -41,6 +42,8 @@ input {
   border: 1px solid black;
   border-radius: 5px;
   font-family: 'Press Start 2P', cursive;
+  background-color: #e1e7eb;
+  color: #303b6b;
 }
 label {
   font-family: 'Press Start 2P', cursive;

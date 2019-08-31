@@ -34,13 +34,13 @@ export default {
   padding: 0.5em;
   margin: 0 0.2em;
   border-radius: 5px;
-  background-color: lightgrey;
+  background-color: #d3dbe0;
   border: 1px solid grey;
   margin-bottom: 0.5em;
 }
 
 #fav-pokemon:hover {
-  text-shadow: 0 0 1px #f5de2f;
-  box-shadow: 0 0 5px red;
+  background-color: #e1e7eb;
+  box-shadow: 0 0 2px black;
 }
 </style>
