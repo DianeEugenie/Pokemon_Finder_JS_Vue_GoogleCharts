@@ -37,12 +37,18 @@ export default {
     .then(data => this.pokemons = data.results)
 
     eventBus.$on('pokemon-selected', (pokemon) => {
-      this.selectedPokemon = pokemon
+      this.selectedPokemon = pokemon;
     })
 
     eventBus.$on('pokemon-favourited', (pokemon) => {
       if (this.favourites.length < 10) {this.favourites.push(pokemon) };
     })
+
+    eventBus.$on('pokemon-defavourited', (pokemon) => {
+    let index = this.favourites.indexOf(pokemon);
+      this.favourites.splice(index, 1) }
+    )
+
   },
   components: {
     PokemonList,

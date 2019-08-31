@@ -25,8 +25,13 @@
 
     </div>
     <button type="button" @click="addToFavs" v-if=" this.favourites.length < 10 && !this.favourites.includes(pokemon) ">My Favourite!</button>
+
     <p v-if="this.favourites.includes(pokemon)">One of your Favs!</p>
-    <p v-if="this.favourites.length === 10">You already have 10 Favs!</p>
+
+    <button type="button" @click="removeFromFavs" v-if="this.favourites.includes(pokemon) ">Remove From Favourites</button>
+
+    <p v-if="this.favourites.length === 10 && !this.favourites.includes(pokemon)">You already have 10 Favs!</p>
+
   </div>
 
 </template>
@@ -67,6 +72,9 @@ export default {
     },
     addToFavs() {
       eventBus.$emit('pokemon-favourited', this.pokemon);
+    },
+    removeFromFavs() {
+      eventBus.$emit('pokemon-defavourited', this.pokemon);
     }
   },
   filters: {
