@@ -1,6 +1,9 @@
 <template lang="html">
+
   <div id="fav-pokemon" @click="goToPokemon">
+
     {{ pokemon.name | capitalize }}
+    
   </div>
 
 </template>

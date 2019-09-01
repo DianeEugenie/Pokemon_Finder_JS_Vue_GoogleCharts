@@ -10,13 +10,16 @@
 
 
         <div class="name-type">
+
           <h4>In The Wild</h4>
           <img v-for="(value, key) in sprites" :src="value" v-if="value !== null && key === 'front_default' || key === 'front_shiny'">
           <h4>Type</h4>
           <span v-for="(type, index) of types">{{ type.name | capitalize }}</span>
+
         </div>
 
         <div class="abilities-moves">
+
           <h4>Abilities</h4>
           <span v-for="(ability, index) of abilities">{{ ability.name | capitalize }}</span>
 
@@ -27,9 +30,8 @@
 
         </div>
 
-
-
       </div>
+
       <button type="button" @click="addToFavs" v-if=" this.favourites.length < 10 && !this.favourites.includes(pokemon) ">My Favourite!</button>
 
       <p v-if="this.favourites.length === 10 && !this.favourites.includes(pokemon)">You already have 10 Favs!</p>
@@ -235,7 +237,6 @@ p {
 
 #pokeChart {
   margin-top: 1em;
-  /* display: flex; */
   max-width: 33em;
   overflow-x: hidden;
   border: 3px double #606d75;

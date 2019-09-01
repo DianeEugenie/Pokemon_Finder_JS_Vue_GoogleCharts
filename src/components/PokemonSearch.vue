@@ -1,8 +1,12 @@
 <template lang="html">
+
   <div id="search-bar">
+
     <label for="searchbar">Pokemon Finder</label>
     <input id="searchbar" type="text" v-model="searchedPokemon" @input="searchForPokemon" placeholder="Find Your Pokemon">
+    
   </div>
+
 </template>
 
 <script>
@@ -47,6 +51,7 @@ input {
 }
 label {
   font-family: 'Press Start 2P', cursive;
-  color: #242f3b;
+  color: #303b6b;
+  text-shadow: 0 2px  #d3dbe0;
 }
 </style>

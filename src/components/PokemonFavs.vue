@@ -1,5 +1,7 @@
 <template lang="html">
+
   <div id="favourites" v-if="this.favourites.length">
+
     <h4>My 10 Favourites</h4>
 
     <div id="fav-list">
@@ -7,6 +9,7 @@
       <PokemonFavsItem v-for="(pokemon, index) of this.favourites" :pokemon="pokemon" :key="index" />
 
     </div>
+    
   </div>
 
 </template>
@@ -45,14 +48,13 @@ export default {
 #fav-list {
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
 h4 {
   color: #303b6b;
 }
-
-
 
 
 </style>

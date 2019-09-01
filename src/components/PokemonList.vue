@@ -1,12 +1,15 @@
 <template lang="html">
+
   <div id="main-list">
+    
     <h2>Pokemonlist</h2>
 
     <div id="list">
-
       <PokemonListItem v-for="(pokemon, index) of pokemons" :pokemon="pokemon" :key="index" />
     </div>
+
   </div>
+
 </template>
 
 <script>
@@ -55,9 +58,6 @@ h2 {
   font-size: 1.3em;
 }
 
-.hidden {
-  display: none;
-}
 
 
 </style>

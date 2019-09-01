@@ -1,19 +1,24 @@
 <template lang="html">
-<div id="view">
-  <h1>Gotta Find 'em All!</h1>
 
-  <PokemonSearch :pokemons="pokemons"/>
+  <div id="view">
+    
+    <h1>Gotta Find 'em All!</h1>
 
-  <PokemonFavs :favourites="favourites" :pokemon="selectedPokemon" />
+    <PokemonSearch :pokemons="pokemons"/>
 
-  <div id="main-container">
-    <PokemonList :pokemons="pokemons"/>
-    <PokemonDetail v-if="selectedPokemon" :pokemon="selectedPokemon" :favourites="favourites"/>
+    <PokemonFavs :favourites="favourites" :pokemon="selectedPokemon" />
+
+    <div id="main-container">
+
+      <PokemonList :pokemons="pokemons"/>
+      <PokemonDetail v-if="selectedPokemon" :pokemon="selectedPokemon" :favourites="favourites"/>
+
+    </div>
+
   </div>
 
-
-</div>
 </template>
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
 import PokemonList from '@/components/PokemonList';

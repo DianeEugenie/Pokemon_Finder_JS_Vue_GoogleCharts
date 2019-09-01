@@ -1,4 +1,5 @@
 <template lang="html">
+  
   <div id="pokemon" @click="handleClick">
     {{pokemon.name | capitalize}}
   </div>
@@ -11,11 +12,6 @@ import {eventBus} from '../main.js';
 export default {
   name: 'list-item',
   props: ['pokemon'],
-  data() {
-    return {
-      searchedPokemon: ""
-    }
-  },
   methods: {
     handleClick() {
       eventBus.$emit('pokemon-selected', this.pokemon)
