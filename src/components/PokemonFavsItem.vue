@@ -15,13 +15,6 @@ export default {
     goToPokemon() {
       eventBus.$emit('pokemon-selected', this.pokemon)
     }
-  },
-  filters: {
-    capitalize: function (value) {
-      if (value) {
-        return value.charAt(0).toUpperCase() + value.slice(1)
-      }
-    }
   }
 }
 </script>
@@ -37,6 +30,7 @@ export default {
   background-color: #d3dbe0;
   border: 1px solid grey;
   margin-bottom: 0.5em;
+  color: #3b477d;
 }
 
 #fav-pokemon:hover {

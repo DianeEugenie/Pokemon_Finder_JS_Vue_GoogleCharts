@@ -25,13 +25,6 @@ export default {
     goToPokemon() {
       eventBus.$emit('pokemon-selected', this.pokemon)
     }
-  },
-  filters: {
-    capitalize: function (value) {
-      if (value) {
-        return value.charAt(0).toUpperCase() + value.slice(1)
-      }
-    }
   }
 }
 </script>

@@ -133,18 +133,6 @@ export default {
     removeFromFavs() {
       eventBus.$emit('pokemon-defavourited', this.pokemon);
     }
-  },
-  filters: {
-    upperCase: function (value) {
-      if (value) {
-        return value.toUpperCase();
-      }
-    },
-    capitalize: function (value) {
-      if (value) {
-        return value.charAt(0).toUpperCase() + value.slice(1);
-      }
-    }
   }
 }
 
@@ -201,10 +189,16 @@ h4 {
   color: #3b477d;
   background-color: #d3dbe0;
 }
-h3, h2{
+h3 {
   margin-top: 0.5em;
   color: #303b6b;
   text-shadow: 0 2px #ffae0d;
+}
+h2 {
+  margin: 0.2em 0 0.5em 0;
+  color: #303b6b;
+  text-shadow: 0 2px #ffae0d;
+  font-size: 1.35em;
 }
 
 img {

@@ -20,11 +20,6 @@ export default {
     handleClick() {
       eventBus.$emit('pokemon-selected', this.pokemon)
     }
-  },
-  filters: {
-    capitalize: function (value) {
-      return value.charAt(0).toUpperCase() + value.slice(1)
-    }
   }
 }
 </script>
@@ -38,7 +33,8 @@ export default {
   display: flex;
   justify-content: space-evenly;
   background-color: #d3dbe0;
-  width: 8em;
+  width: 7em;
+  font-size: 0.8em;
 }
 #pokemon:hover {
   box-shadow: 0 0 2px black;
