@@ -35,7 +35,7 @@ export default {
   align-items: center;
   flex-direction: column;
   font-family: 'Press Start 2P', cursive;
-  text-shadow: 0 2px #ffae0d;
+  text-shadow: 0 2px  #d3dbe0;
   margin: 1em 5em;
   box-shadow: 1px 2px #242f3b;
   border: 2px groove grey;

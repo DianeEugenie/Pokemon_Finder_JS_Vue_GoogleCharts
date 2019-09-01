@@ -23,18 +23,16 @@
           <h4>Moves</h4>
           <span v-for="(move, index) of moves" v-if="index <= 5">{{ move.name | capitalize }}</span>
 
-
-
           <p v-if="this.favourites.includes(pokemon)">One of your Favs!</p>
 
-
-          <p v-if="this.favourites.length === 10 && !this.favourites.includes(pokemon)">You already have 10 Favs!</p>
         </div>
 
 
 
       </div>
       <button type="button" @click="addToFavs" v-if=" this.favourites.length < 10 && !this.favourites.includes(pokemon) ">My Favourite!</button>
+
+      <p v-if="this.favourites.length === 10 && !this.favourites.includes(pokemon)">You already have 10 Favs!</p>
 
       <button type="button" @click="removeFromFavs" v-if="this.favourites.includes(pokemon) ">Remove From Favourites</button>
 
@@ -192,12 +190,12 @@ h4 {
 h3 {
   margin-top: 0.5em;
   color: #303b6b;
-  text-shadow: 0 2px #ffae0d;
+  text-shadow: 0 2px  #d3dbe0;
 }
 h2 {
   margin: 0.2em 0 0.5em 0;
   color: #303b6b;
-  text-shadow: 0 2px #ffae0d;
+  text-shadow: 0 2px  #d3dbe0;
   font-size: 1.35em;
 }
 
@@ -230,8 +228,9 @@ button:active {
 }
 
 p {
-  color: #303b6b;
-  text-shadow: 0 2px #ffae0d;
+  color: #56639c;
+  text-shadow: 2px 2px  #d3dbe0;
+  margin-bottom: 0;
 }
 
 #pokeChart {

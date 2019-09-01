@@ -51,7 +51,7 @@ h2 {
   text-align: center;
   font-family: 'Press Start 2P', cursive;
   color: #303b6b;
-  text-shadow: 0 2px #ffae0d;
+  text-shadow: 0 2px  #d3dbe0;
   font-size: 1.3em;
 }
 

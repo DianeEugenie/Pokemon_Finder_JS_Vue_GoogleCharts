@@ -65,7 +65,7 @@ h1 {
   display: flex;
   justify-content: center;
   color: #303b6b;
-  text-shadow: 0 4px #ffae0d;
+  text-shadow: 0 4px  #d3dbe0;
   font-family: 'Press Start 2P', cursive;
 }
 
