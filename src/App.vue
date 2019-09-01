@@ -80,7 +80,7 @@ h1 {
 }
 
 #main-container {
-  margin-top: 2em;
+  margin-top: 0.5em;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

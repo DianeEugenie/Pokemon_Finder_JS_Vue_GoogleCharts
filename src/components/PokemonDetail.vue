@@ -6,44 +6,49 @@
 
     <div class="main-column">
 
-    <div class="main-details">
+      <div class="main-details">
 
 
-      <div class="name-type">
-        <h4>In The Wild</h4>
-        <img v-for="(value, key) in sprites" :src="value" v-if="value !== null && key === 'front_default' || key === 'front_shiny'">
-        <h4>Type</h4>
-        <span v-for="(type, index) of types">{{ type.name | capitalize }}</span>
+        <div class="name-type">
+          <h4>In The Wild</h4>
+          <img v-for="(value, key) in sprites" :src="value" v-if="value !== null && key === 'front_default' || key === 'front_shiny'">
+          <h4>Type</h4>
+          <span v-for="(type, index) of types">{{ type.name | capitalize }}</span>
+        </div>
+
+        <div class="abilities-moves">
+          <h4>Abilities</h4>
+          <span v-for="(ability, index) of abilities">{{ ability.name | capitalize }}</span>
+
+          <h4>Moves</h4>
+          <span v-for="(move, index) of moves" v-if="index <= 5">{{ move.name | capitalize }}</span>
+
+
+
+          <p v-if="this.favourites.includes(pokemon)">One of your Favs!</p>
+
+
+          <p v-if="this.favourites.length === 10 && !this.favourites.includes(pokemon)">You already have 10 Favs!</p>
+        </div>
+
+
+
       </div>
+      <button type="button" @click="addToFavs" v-if=" this.favourites.length < 10 && !this.favourites.includes(pokemon) ">My Favourite!</button>
 
-      <div class="abilities-moves">
-        <h4>Abilities</h4>
-        <span v-for="(ability, index) of abilities">{{ ability.name | capitalize }}</span>
-
-        <h4>Moves</h4>
-        <span v-for="(move, index) of moves" v-if="index <= 5">{{ move.name | capitalize }}</span>
-      </div>
+      <button type="button" @click="removeFromFavs" v-if="this.favourites.includes(pokemon) ">Remove From Favourites</button>
 
     </div>
-    <GChart id="pokeChart" v-if="statData"
-    type="BarChart"
-    :data="statData"
-    :options="chartOptions"
-    />
 
+    <div id="pokeChart">
+      <GChart v-if="statData"
+      type="ColumnChart"
+      :data="statData"
+      :options="chartOptions"
+      />
     </div>
 
-
-
-    <button type="button" @click="addToFavs" v-if=" this.favourites.length < 10 && !this.favourites.includes(pokemon) ">My Favourite!</button>
-
-    <p v-if="this.favourites.includes(pokemon)">One of your Favs!</p>
-
-    <button type="button" @click="removeFromFavs" v-if="this.favourites.includes(pokemon) ">Remove From Favourites</button>
-
-    <p v-if="this.favourites.length === 10 && !this.favourites.includes(pokemon)">You already have 10 Favs!</p>
   </div>
-
 
 </template>
 
@@ -65,16 +70,34 @@ export default {
       statNames: [],
       statData: [],
       chartOptions: {
-        // width: 700,
-        height: 300,
-        title: 'Your Base PokeStats!',
-        colors: ['black'],
-        fontName: 'Press Start 2P',
-        fontSize: 8,
-        backgroundColor: '#d3dbe0'
+        width: 600,
+        height: 160,
+        title: 'Your Pokemon Stats!',
+        titleTextStyle: {
+          color: '#303b6b',
+          fontName: 'Press Start 2P',
+          fontSize: 9
+        },
+        colors: ['#abbfcc'],
+        fontName: 'sans-serif',
+        fontSize: 11,
+        backgroundColor: '#d3dbe0',
+        bar: {groupWidth: "30%"},
+        legend: {position: "none"},
+        hAxis: {
+          textStyle: {color: '#303b6b'}
+        },
+        vAxis: {
+          textStyle: {color: '#303b6b'}
+        },
+        explorer: {
+          axis: 'horizontal',
+          keepInBounds: true
+        }
       }
-    }
-  },
+
+      }
+    },
   props: ['pokemon', 'favourites'],
   components: {
     GChart
@@ -136,7 +159,7 @@ div.main {
   min-width: 30em;
   max-width: 40em;
   min-height: 30em;
-  max-height: 35em;
+  max-height: 45em;
   justify-content: flex-start;
   font-family: 'Press Start 2P', cursive;
 }
@@ -148,7 +171,7 @@ div.main {
   border: 3px double #606d75;
   border-radius: 5px;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
   color: #303b6b;
   background-color: #abbfcc;
   box-shadow: 1px 2px #242f3b;
@@ -156,6 +179,8 @@ div.main {
 .main-column {
   display: flex;
   flex-direction: column;
+  width: 35em;
+  align-items: center;
 }
 
 .name-type, .abilities-moves {
@@ -216,6 +241,10 @@ p {
 }
 
 #pokeChart {
- display: flex;
+  margin-top: 1em;
+  /* display: flex; */
+  max-width: 33em;
+  overflow-x: hidden;
+  border: 3px double #606d75;
 }
 </style>
