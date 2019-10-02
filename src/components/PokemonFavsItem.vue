@@ -1,9 +1,9 @@
 <template lang="html">
 
-  <div id="fav-pokemon" @click="goToPokemon">
+  <div class="fav-pokemon" @click="goToPokemon">
 
     {{ pokemon.name | capitalize }}
-    
+
   </div>
 
 </template>
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-#fav-pokemon {
+.fav-pokemon {
   display: flex;
   flex-direction: row;
   text-shadow: none;
@@ -36,7 +36,7 @@ export default {
   color: #3b477d;
 }
 
-#fav-pokemon:hover {
+.fav-pokemon:hover {
   background-color: #e1e7eb;
   box-shadow: 0 0 2px black;
 }

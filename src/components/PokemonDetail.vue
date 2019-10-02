@@ -95,9 +95,8 @@ export default {
           keepInBounds: true
         }
       }
-
-      }
-    },
+    }
+  },
   props: ['pokemon', 'favourites'],
   components: {
     GChart
@@ -110,7 +109,7 @@ export default {
   },
   methods: {
     fetchPokemon(){
-      fetch(this.pokemon.url) // only fetches the first link of pokemon that is clicked
+      fetch(this.pokemon.url)
       .then(res => res.json())
       .then(data => {
         this.pokemonDetails = data;
@@ -125,8 +124,7 @@ export default {
           newData.push([this.statNames[i], this.stats[i]]);
         };
         this.statData = newData})
-      },
-
+    },
     addToFavs() {
       eventBus.$emit('pokemon-favourited', this.pokemon);
     },

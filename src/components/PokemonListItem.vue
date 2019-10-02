@@ -1,5 +1,5 @@
 <template lang="html">
-  
+
   <div id="pokemon" @click="handleClick">
     {{pokemon.name | capitalize}}
   </div>
